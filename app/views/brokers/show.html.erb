@@ -1,0 +1,7 @@
+<h1>BROKER'S ACCOUNT</h1>
+
+<p>Broker Name: <%= @broker.first_name %> <%= @broker.last_name %></p>
+
+<p>Broker Email: <%= @broker.email %></p>
+
+<%= link_to "Logout", destroy_broker_session_path, method: :delete %> 
