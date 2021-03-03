@@ -1,0 +1,7 @@
+<h1>BUYER'S ACCOUNT</h1>
+
+<p>Buyer Name: <%= @buyer.first_name %> <%= @buyer.last_name %></p>
+
+<p>Buyer Email: <%= @buyer.email %></p>
+
+<%= link_to "Logout", destroy_buyer_session_path, method: :delete %> 
