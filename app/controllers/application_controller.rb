@@ -17,4 +17,5 @@ class ApplicationController < ActionController::Base
        when Buyer then buyer_path(@buyer)
     end
   end
+
 end

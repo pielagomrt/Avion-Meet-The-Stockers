@@ -1,0 +1,16 @@
+EDIT BROKER ACCOUNT
+<div>
+  <%= form_with(model: @broker) do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.submit 'Save' %>
+    <%= link_to "Go Back", admins_path %>
+  <% end %>
+</div>
