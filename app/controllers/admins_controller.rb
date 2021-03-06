@@ -19,4 +19,5 @@ class AdminsController < ApplicationController
   def edit_buyer
     @buyer = Buyer.find(params[:id])
   end
+
 end

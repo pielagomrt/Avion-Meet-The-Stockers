@@ -8,5 +8,5 @@ class RegistrationsController < Devise::RegistrationsController
        when Buyer then buyer_path(@buyer)
     end
   end
-
+  
 end
