@@ -19,15 +19,5 @@ Rails.application.routes.draw do
   match 'admins/:id/edit/broker' => 'admins#edit_broker', as: 'edit_broker_admin', via: :get
   match 'admins/:id/edit/buyer' => 'admins#edit_buyer', as: 'edit_buyer_admin', via: :get
   
-  # authenticated :broker do
-  #   get '/brokers/:id/', to: 'brokers#show'
-  #   root to: "brokers#show", as: :user_broker
-  # end
-
-  # authenticated :buyer do
-  #   get '/buyers/:id/', to: 'buyers#show'
-  #   root to: "buyers#show", as: :user_buyer
-  # end
-  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
