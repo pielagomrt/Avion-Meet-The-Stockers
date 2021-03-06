@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   devise_for :admins, :controllers => { :registrations => :registrations }
-  devise_for :brokers, :controllers => { :registrations => :registrations }
-  devise_for :buyers, :controllers => { :registrations => :registrations }
+  devise_for :brokers, :controllers => { :registrations => :updates }
+  devise_for :buyers, :controllers => { :registrations => :updates }
 
   root to: "welcome#index"
 
