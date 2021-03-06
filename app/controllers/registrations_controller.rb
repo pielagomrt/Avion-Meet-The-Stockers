@@ -1,4 +1,4 @@
-class UpdatesController < Devise::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController
 
   protected
 

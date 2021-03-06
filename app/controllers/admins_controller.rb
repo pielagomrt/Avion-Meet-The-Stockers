@@ -10,8 +10,28 @@ class AdminsController < ApplicationController
     @broker = Broker.new
   end
 
+  def create_broker
+    @broker = Broker.new(broker_create_params)
+
+    if @broker.save
+      redirect_to admins_path
+    else
+      render :new_broker
+    end
+  end
+
   def new_buyer
     @buyer = Buyer.new
+  end
+
+  def create_buyer
+    @buyer = Buyer.new(buyer_create_params)
+
+    if @buyer.save
+      redirect_to admins_path
+    else
+      render :new_buyer
+    end
   end
 
   def edit_broker
@@ -20,7 +40,7 @@ class AdminsController < ApplicationController
 
   def update_broker
     @broker = Broker.find(params[:id])
-    if @broker.update(broker_params)
+    if @broker.update(broker_update_params)
       redirect_to admins_path
     else
       render :edit_broker
@@ -33,7 +53,7 @@ class AdminsController < ApplicationController
 
   def update_buyer
     @buyer = Buyer.find(params[:id])
-    if @buyer.update(buyer_params)
+    if @buyer.update(buyer_update_params)
       redirect_to admins_path
     else
       render :edit_buyer
@@ -42,42 +62,19 @@ class AdminsController < ApplicationController
 
   private
 
-  def broker_params
+  def broker_create_params
+    params.require(:broker).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def broker_update_params
     params.require(:broker).permit(:first_name, :last_name)
   end
 
-  def buyer_params
+  def buyer_create_params
+    params.require(:broker).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def buyer_update_params
     params.require(:buyer).permit(:first_name, :last_name)
-  end
-end
-
-class RegistrationsController < Devise::RegistrationsController
-  # modify built-in code from devise gem
-  def create
-    build_resource(sign_up_params)
-
-    resource.save
-    yield resource if block_given?
-    if resource.persisted?
-      if resource.active_for_authentication? && admin_signed_in?
-        set_flash_message! :notice, :signed_up
-        expire_data_after_sign_in!
-        respond_with resource, location: admins_path
-      else
-        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-        sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_in_path_for(resource)
-      end
-    else
-      clean_up_passwords resource
-      set_minimum_password_length
-      respond_with resource
-    end
-  end
-  
-  private
-
-  def sign_up_params
-    devise_parameter_sanitizer.sanitize(:sign_up)
   end
 end

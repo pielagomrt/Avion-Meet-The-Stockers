@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   devise_for :admins, :controllers => { :registrations => :registrations }
-  devise_for :brokers, :controllers => { :registrations => :updates }
-  devise_for :buyers, :controllers => { :registrations => :updates }
+  devise_for :brokers, :controllers => { :registrations => :registrations }
+  devise_for :buyers, :controllers => { :registrations => :registrations }
 
   root to: "welcome#index"
 
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # for manually creating new broker and buyer accounts
   get 'admins/new/broker' => 'admins#new_broker', as: 'new_broker_admin'
   get 'admins/new/buyer' => 'admins#new_buyer', as: 'new_buyer_admin'
+  post 'admins/create_broker' => 'admins#create_broker', as: 'create_broker_admin'
+  post 'admins/create_buyer' => 'admins#create_buyer', as: 'create_buyer_admin'
 
   # for editing broker and buyer accounts
   get 'admins/:id/edit/broker' => 'admins#edit_broker', as: 'edit_broker_admin'
