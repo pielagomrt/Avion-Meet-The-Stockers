@@ -1,6 +1,6 @@
 OPEN BUYER ACCOUNT
 <div>
-  <%= form_with(model: @buyer) do |f| %>
+  <%= form_with method: :post, scope: :buyer, url: create_buyer_admin_path , local:true do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
 
