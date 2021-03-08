@@ -23,10 +23,8 @@ Rails.application.routes.draw do
   put 'admins/:id/update_broker' => 'admins#update_broker', as: 'update_broker_admin'
   put 'admins/:id/update_buyer' => 'admins#update_buyer', as: 'update_buyer_admin'
 
-  # for pending broker signup accounts
-  get 'admins/pending/broker' => 'admins#pending_broker_signup', as: 'pending_broker_signup_admin'
 
-  # for approving pending broker signup accounts
+  get 'admins/pending/broker' => 'admins#pending_broker_signup', as: 'pending_broker_signup_admin'
   put 'admins/:id/approve_broker' => 'admins#approve_broker_signup', as: 'approve_broker_admin'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
