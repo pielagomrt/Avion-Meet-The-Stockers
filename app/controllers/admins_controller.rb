@@ -27,10 +27,12 @@ class AdminsController < ApplicationController
 
   def approve_broker_signup
     @broker = Broker.find(params[:id])
+    @email = @broker.email
     @broker.approved = true
     if @broker.save
       flash[:notice] = "Broker is approved"
       redirect_to admins_path
+      BrokerMailer.new_broker_approved(@email).deliver_now
     else
       flash[:alert] = "Broker approve failure"
     end
