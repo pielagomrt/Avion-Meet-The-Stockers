@@ -2,8 +2,9 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @brokers = Broker.all
-    @buyers = Buyer.all
+    @brokers = Broker.where(approved: true)
+    @buyers = Buyer.where('confirmed_at IS NOT NULL')
+    @buyers_not_confirmed = Buyer.where('confirmed_at IS NULL')
   end
 
   def new_broker
@@ -17,6 +18,21 @@ class AdminsController < ApplicationController
       redirect_to admins_path
     else
       render :new_broker
+    end
+  end
+
+  def pending_broker_signup
+    @brokers = Broker.where(approved: false)
+  end
+
+  def approve_broker_signup
+    @broker = Broker.find(params[:id])
+    @broker.approved = true
+    if @broker.save
+      flash[:notice] = "Broker is approved"
+      redirect_to admins_path
+    else
+      flash[:alert] = "Broker approve failure"
     end
   end
 
@@ -71,7 +87,7 @@ class AdminsController < ApplicationController
   end
 
   def buyer_create_params
-    params.require(:broker).permit(:first_name, :last_name, :email, :password)
+    params.require(:buyer).permit(:first_name, :last_name, :email, :password)
   end
 
   def buyer_update_params

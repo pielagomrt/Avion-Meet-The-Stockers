@@ -1,0 +1,29 @@
+<h1>Brokers for Approval:</h1>
+<table>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th></th>
+      <th></th>
+      <th>For Approval</th>
+    </tr>
+  </thead>
+  <% @brokers.each do |broker| %>
+    <tbody>
+      <tr>
+        <td scope="row"></td>
+        <td><%= broker.first_name %></td>
+        <td><%= broker.last_name %></td>
+        <td><%= broker.email %></td>
+        <td><%= link_to 'View', broker_path(broker) %></td>
+        <td><%= link_to 'Edit', edit_broker_admin_path(broker) %></td>
+        <td><%= link_to "Approve", approve_broker_admin_path(broker), method: :put, data: { confirm: 'Are you sure you want to approve this?' } %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<br>
+<%= link_to "Go Back", admins_path %>
