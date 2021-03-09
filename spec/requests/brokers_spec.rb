@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Brokers", type: :request do
-  describe "GET /brokers" do
-    it "works! (now write some real specs)" do
-      get brokers_path
-      expect(response).to have_http_status(200)
+  let(:broker) {create(:broker)}
+
+  describe "GET /brokers/:id" do
+    it "gets Broker show method" do
+      get broker_path(broker)
+      expect(response).to render_template(:show)
     end
   end
 end
