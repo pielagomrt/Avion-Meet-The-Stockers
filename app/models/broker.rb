@@ -6,6 +6,12 @@ class Broker < ApplicationRecord
          validates :first_name, presence: true
          validates :last_name, presence: true
 
+  after_create :send_broker_mail
+
+  def send_broker_mail
+    BrokerMailer.new_broker_pending(email).deliver
+  end
+
   def active_for_authentication? 
     super && approved? 
   end 
