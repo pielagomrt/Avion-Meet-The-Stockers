@@ -5,6 +5,8 @@ RSpec.describe "Admins", type: :request do
   let(:admin) {create(:admin)}
   let(:broker) {create(:broker)}
   let(:buyer) {create(:buyer)}
+  let(:attrs_broker) {attributes_for(:broker)}
+  let(:attrs_buyer) {attributes_for(:buyer)}
   
   before(:each) do
     login_as(admin)
@@ -23,7 +25,7 @@ RSpec.describe "Admins", type: :request do
       expect(response).to render_template(:new_broker)
     end
     it "2. gets admin post broker path" do
-    post create_broker_admin_path, :params => {broker: {first_name: 'Rio', last_name: 'Sevilla', email: 'test@gmail.com', password: 'test123456', password_confirmation: '123456', approved: false}}
+    post create_broker_admin_path, params: { broker: attrs_broker }
     expect(response).to redirect_to admins_path
     end
   end
@@ -40,6 +42,42 @@ RSpec.describe "Admins", type: :request do
       put approve_broker_admin_path(broker)
       expect(response).to redirect_to admins_path
       expect(ActionMailer::Base.deliveries.count).to eq 2
+    end
+  end
+
+  describe "creates a new buyer account" do
+    it "1. gets admin new buyer path" do
+      get new_buyer_admin_path
+      expect(response).to render_template(:new_buyer)
+    end
+
+    it "2. gets admin post buyer path" do
+      post create_buyer_admin_path, params: { buyer: attrs_buyer }
+      expect(response).to redirect_to admins_path
+    end
+  end
+
+  describe "updates a broker account" do
+    it "1. gets admin edit broker path" do
+      get edit_broker_admin_path(broker)
+      expect(response).to render_template(:edit_broker)
+    end
+
+    it "2. gets admin update broker path" do
+      put update_broker_admin_path(broker), params: { broker: attrs_broker }
+      expect(response).to redirect_to admins_path
+    end
+  end
+
+  describe "updates a buyer account" do
+    it "1. gets admin edit buyer path" do
+      get edit_buyer_admin_path(buyer)
+      expect(response).to render_template(:edit_buyer)
+    end
+
+    it "2. gets admin update buyer path" do
+      put update_buyer_admin_path(buyer), params: { buyer: attrs_buyer }
+      expect(response).to redirect_to admins_path
     end
   end
 
