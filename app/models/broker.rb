@@ -6,6 +6,9 @@ class Broker < ApplicationRecord
          validates :first_name, presence: true
          validates :last_name, presence: true
 
+         has_many :broker_stocks
+         has_many :stocks, through: :broker_stocks
+
   after_create :send_broker_mail
 
   def send_broker_mail

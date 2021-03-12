@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_164359) do
+ActiveRecord::Schema.define(version: 2021_03_12_131151) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2021_03_07_164359) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "broker_stocks", force: :cascade do |t|
+    t.string "ticker"
+    t.string "company"
+    t.string "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "brokers", force: :cascade do |t|
@@ -56,6 +64,12 @@ ActiveRecord::Schema.define(version: 2021_03_07_164359) do
     t.string "unconfirmed_email"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "ticker"
+    t.string "company"
+    t.string "price"
   end
 
 end

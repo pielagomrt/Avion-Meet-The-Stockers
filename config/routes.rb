@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :admins
   resources :brokers
   resources :buyers
+  resources :stocks
+  resources :broker_stocks
 
   # for manually creating new broker and buyer accounts
   get 'admins/new/broker' => 'admins#new_broker', as: 'new_broker_admin'
