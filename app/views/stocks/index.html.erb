@@ -1,1 +1,58 @@
-<h1><%= @current_price%></h1>
+<br/><br/>
+
+
+STOCKS
+<%= link_to "Find Stock", new_stock_path %>
+<br/><br/>
+<p> MOST ACTIVE </p>
+<table>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Ticker</th>
+      <th scope="col">Company</th>
+      <th scope="col">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @stocks.each do |stock| %>
+    <tbody>
+      <tr>
+        <td scope="row"></td>
+        <% quote = @client.quote(stock.symbol) %>
+        <td><%= "#{stock.symbol}" %></td>
+        <td><%= @client.company(stock.symbol).company_name %></td>
+        <td><%= "#{quote.latest_price}" %></td>
+        <td><%= link_to 'Buy', stocks_path %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<br/><br/>
+<p> SEARCHED </p>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Ticker</th>
+      <th scope="col">Company</th>
+      <th scope="col">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @stocks_search.each do |stock| %>
+    <tbody>
+      <tr>
+        <td scope="row"></td>
+        <td><%= stock.ticker %></td>
+        <td><%= stock.company %></td>
+        <td><%= stock.price %></td>
+        <td><%= link_to 'Buy', stocks_path %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<br/><br/>
+<%= link_to "Welcome Page", root_path %>

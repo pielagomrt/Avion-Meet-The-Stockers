@@ -1,0 +1,11 @@
+<br/><br/>
+SEARCH STOCK
+<div>
+  <%= form_with method: :post, scope: :stock, url: stocks_path , local:true do |f| %>
+    <%= f.label :ticker %>
+    <%= f.text_field :ticker %>
+
+    <%= f.submit 'FIND' %>
+    <%= link_to "Go Back", stocks_path %>
+  <% end %>
+</div>

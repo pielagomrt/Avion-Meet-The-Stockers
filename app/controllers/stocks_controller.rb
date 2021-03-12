@@ -1,24 +1,27 @@
 class StocksController < ApplicationController
   before_action :test
 
-  # def index
-  #   # @current_price = @client.company('MSFT').company_name
-  # end
+  def index
+   @stocks = @client.stock_market_list(:mostactive).slice(0,10)
+   @stocks_search = Stock.all
+  end
 
-  # def new
-  #   @stock = Stock.new
-  # end
+  def new
+    @stock = Stock.new
+  end
 
-  # def create
-  #   @stock = Stock.new(stock_create_params)
+  def create
+    @stock = Stock.new
+    @stock.ticker = @client.company(params[:stock][:ticker]).symbol
+    @stock.company = @client.company(params[:stock][:ticker]).company_name
+    @stock.price = @client.quote(params[:stock][:ticker]).latest_price
 
-  #   if @stock.save
-  #     redirect_to admins_path
-  #   else
-  #     render :new_broker
-  #   end
-  # end
-
+    if @stock.save
+      redirect_to stocks_path
+    else
+      render :new
+    end
+  end
 
 
 private
@@ -32,7 +35,7 @@ private
   end
 
   def stock_create_params
-    params.require(:stock).permit(:ticker, :company, :price)
+    params.require(:stock).permit(:ticker)
   end
 
 end
