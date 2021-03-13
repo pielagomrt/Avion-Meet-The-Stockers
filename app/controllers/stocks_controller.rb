@@ -2,7 +2,6 @@ class StocksController < ApplicationController
   before_action :test
 
   def index
-   #@stocks = @client.stock_market_list(:mostactive).slice(0,10)
    @stocks_search = Stock.all
   end
 
@@ -11,7 +10,6 @@ class StocksController < ApplicationController
   end
 
   def create
-    # @stock = Stock.new
     @ticker = @client.company(params[:stock][:ticker]).symbol
     @company = @client.company(params[:stock][:ticker]).company_name
   
@@ -34,7 +32,7 @@ private
   def test
     @client = IEX::Api::Client.new(
     publishable_token: 'pk_b80fe862282642169f72829236149ccc',
-    secret_token: 'sk_b22f82653c6a4cf8891a943950392693',
+    secret_token: Rails.application.credentials.secret_token,
     # secret_token: Rails.application.credentials.secret_token,
     endpoint: 'https://cloud.iexapis.com/v1'
     )
@@ -45,3 +43,4 @@ private
   end
 
 end
+
