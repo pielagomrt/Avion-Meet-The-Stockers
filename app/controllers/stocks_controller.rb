@@ -2,7 +2,7 @@ class StocksController < ApplicationController
   before_action :test
 
   def index
-   @stocks = @client.stock_market_list(:mostactive).slice(0,10)
+   #@stocks = @client.stock_market_list(:mostactive).slice(0,10)
    @stocks_search = Stock.all
   end
 
@@ -11,18 +11,24 @@ class StocksController < ApplicationController
   end
 
   def create
-    @stock = Stock.new
-    @stock.ticker = @client.company(params[:stock][:ticker]).symbol
-    @stock.company = @client.company(params[:stock][:ticker]).company_name
-    @stock.price = @client.quote(params[:stock][:ticker]).latest_price
+    # @stock = Stock.new
+    @ticker = @client.company(params[:stock][:ticker]).symbol
+    @company = @client.company(params[:stock][:ticker]).company_name
+  
+    @stock = Stock.find_or_create_by(ticker: @ticker, company: @company)
 
+    @stock.price = @client.quote(params[:stock][:ticker]).latest_price
+    
     if @stock.save
-      redirect_to stocks_path
+      redirect_to stock_path(@stock)
     else
       render :new
     end
   end
 
+  def show
+    @stock = Stock.find(params[:id])
+  end
 
 private
   def test

@@ -29,5 +29,7 @@ Rails.application.routes.draw do
   get 'admins/pending/broker' => 'admins#pending_broker_signup', as: 'pending_broker_signup_admin'
   put 'admins/:id/approve_broker' => 'admins#approve_broker_signup', as: 'approve_broker_admin'
 
+  get 'brokers/:id/portfolio' => 'brokers#show_portfolio', as: 'broker_portfolio'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -25,9 +25,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_131151) do
   end
 
   create_table "broker_stocks", force: :cascade do |t|
-    t.string "ticker"
-    t.string "company"
-    t.string "price"
+    t.integer "broker_id"
+    t.integer "stock_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
