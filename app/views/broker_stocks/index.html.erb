@@ -28,7 +28,7 @@ STOCKS
         <td><%= broker_stock.stock.price %></td>
         <td><%= broker_stock.broker_id %></td>
         <td><%= broker_stock.broker.first_name %> <%= broker_stock.broker.last_name %></td>
-        <td><%= link_to 'Buy', broker_stock_path(broker_stock.broker_id, stock_id: broker_stock.stock_id) %>
+        <td><%= link_to 'Buy', broker_stock_path(id: broker_stock.id, broker_id: broker_stock.broker_id, stock_id: broker_stock.stock_id) %>
         <td></td>
         </tr>
     </tbody>

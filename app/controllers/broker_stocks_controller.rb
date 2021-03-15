@@ -17,7 +17,7 @@ class BrokerStocksController < ApplicationController
   end
 
   def show
-    @broker = Broker.find(params[:id])
+    @broker = Broker.find(params[:broker_id])
     @stock = Stock.find(params[:stock_id])
     @broker_stock = BrokerStock.find(params[:id])
   end

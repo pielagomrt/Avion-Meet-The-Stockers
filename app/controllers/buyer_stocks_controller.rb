@@ -5,7 +5,7 @@ class BuyerStocksController < ApplicationController
     end
 
     def create
-      @broker_stock = BrokerStock.find(params[:broker_stock_id])
+      @broker_stock = BrokerStock.find(params[:id])
       current_buyer.broker_stocks << @broker_stock
 
       if current_buyer.save
