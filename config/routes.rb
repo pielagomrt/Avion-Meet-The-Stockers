@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :buyers
   resources :stocks
   resources :broker_stocks
+  resources :buyer_stocks, only: [:create, :index]
 
   # for manually creating new broker and buyer accounts
   get 'admins/new/broker' => 'admins#new_broker', as: 'new_broker_admin'
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   put 'admins/:id/approve_broker' => 'admins#approve_broker_signup', as: 'approve_broker_admin'
 
   get 'brokers/:id/portfolio' => 'brokers#show_portfolio', as: 'broker_portfolio'
+  get 'buyers/:id/portfolio' => 'buyers#show_portfolio', as: 'buyer_portfolio'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

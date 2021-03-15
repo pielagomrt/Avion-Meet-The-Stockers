@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+    <th scope="col"></th>
+      <th scope="col">Stock ID</th>
+      <th scope="col">Ticker</th>
+      <th scope="col">Company</th>
+      <th scope="col">Price</th>
+      <th scope="col">Broker</th>
+    </tr>
+  </thead>
+  <% @buyer_stocks.each do |buyer_stock| %>
+    <tbody>
+      <tr>
+        <td scope="row"></td>
+        <td><%= buyer_stock.id %></td>
+        <td><%= buyer_stock.broker_stock.stock.ticker %></td>
+        <td><%= buyer_stock.broker_stock.stock.company %></td>
+        <td><%= buyer_stock.broker_stock.stock.price %></td>
+        <td><%= buyer_stock.broker_stock.broker.first_name %> <%= buyer_stock.broker_stock.broker.last_name %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
