@@ -1,0 +1,45 @@
+<br/><br/>
+
+
+STOCKS
+<table>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">BROKER_STOCK ID</th>
+      <th scope="col">Stock ID</th>
+      <th scope="col">Ticker</th>
+      <th scope="col">Company</th>
+      <th scope="col">Price</th>
+      <th scope="col">Broker ID</th>
+      <th scope="col">Broker</th>
+      <th scope="col">Buyer</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @broker_stocks.each do |broker_stock| %>
+    <tbody>
+      <tr>
+        <td scope="row"></td>
+        <td><%= broker_stock.id %></td>
+        <td><%= broker_stock.stock_id %></td>
+        <td><%= broker_stock.stock.ticker %></td>
+        <td><%= broker_stock.stock.company %></td>
+        <td><%= broker_stock.stock.price %></td>
+        <td><%= broker_stock.broker_id %></td>
+        <td><%= broker_stock.broker.first_name %> <%= broker_stock.broker.last_name %></td>
+        <td><%= link_to 'Buy', broker_stock_path(id: broker_stock.id, broker_id: broker_stock.broker_id, stock_id: broker_stock.stock_id) %>
+        <td></td>
+        </tr>
+    </tbody>
+<% end %>
+</table>
+
+
+
+           
+            
+
+
+<br/><br/>
+<%= link_to "Welcome Page", root_path %>

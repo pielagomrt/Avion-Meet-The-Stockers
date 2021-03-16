@@ -1,0 +1,5 @@
+<p>Broker: <%= @broker.first_name %> <%= @broker.last_name %></p>
+<p>Stock Ticker: <%= @stock.ticker %></p>
+<p>Stock Company: <%= @stock.company %></p>
+<p>Stock Price: <%= @stock.price %></p>
+<%= link_to 'Buy', buyer_stocks_path(id: @broker_stock.id), method: :post, data: { confirm: 'Are you sure you want to buy this?' } %>

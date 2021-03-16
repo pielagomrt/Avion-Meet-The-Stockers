@@ -5,5 +5,4 @@ class Stock < ApplicationRecord
 
   has_many :broker_stocks
   has_many :brokers, through: :broker_stocks
-
 end

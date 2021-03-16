@@ -5,6 +5,8 @@
 <p>Buyer Email: <%= @buyer.email %></p>
 
 <% if buyer_signed_in? %>
+    <%= link_to "Buy Stocks", broker_stocks_path %>
+    <%= link_to "Show Portfolio", buyer_portfolio_path(@buyer) %>
     <%= link_to "Edit", edit_buyer_registration_path %>
     <%= link_to "Logout", destroy_buyer_session_path, method: :delete %>
 <% else %>
