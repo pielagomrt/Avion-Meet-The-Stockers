@@ -1,10 +1,10 @@
 module ControllerMacros
   
-  def login_broker(broker)
+  def login_broker
     # Before each test, create and login the user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:broker]
-      #broker = FactoryBot.create(:user)
+      broker = FactoryBot.create(:broker)
       # user.confirm! # Or set a confirmed_at inside the factory. Only necessary if you are using the "confirmable" module
       sign_in broker
     end
