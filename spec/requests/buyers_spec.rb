@@ -7,7 +7,6 @@ RSpec.describe "Buyers", type: :request do
   describe "GET /buyers/:id" do
     it "gets Buyers show method" do
       get buyer_path(buyer)
-      byebug
       expect(response).to render_template(:show)
     end
   end
