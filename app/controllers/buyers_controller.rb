@@ -3,3 +3,4 @@ class BuyersController < ApplicationController
     @buyer = Buyer.find(params[:id])
   end
 end
+

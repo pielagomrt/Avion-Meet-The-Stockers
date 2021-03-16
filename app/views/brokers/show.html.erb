@@ -1,10 +1,15 @@
 <h1>BROKER'S ACCOUNT</h1>
 
+<%=render template: "stocks/new.html.erb" %>
+
+
 <p>Broker Name: <%= @broker.first_name %> <%= @broker.last_name %></p>
 
 <p>Broker Email: <%= @broker.email %></p>
 
 <% if broker_signed_in? %>
+    <%= link_to 'Show stocks', stocks_path %>
+    <%= link_to "Show Portfolio", broker_portfolio_path(@broker) %>
     <%= link_to "Edit", edit_broker_registration_path %>
     <%= link_to "Logout", destroy_broker_session_path, method: :delete %>
 <% else %>
