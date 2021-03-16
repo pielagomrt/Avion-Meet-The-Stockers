@@ -3,6 +3,7 @@ class BrokerStocksController < ApplicationController
   end
 
   def create
+    byebug
     @stock = Stock.find(params[:stock_id])
     current_broker.stocks << @stock
 
