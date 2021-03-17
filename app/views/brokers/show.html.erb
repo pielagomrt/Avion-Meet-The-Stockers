@@ -10,6 +10,7 @@
 <% if broker_signed_in? %>
     <%= link_to 'Show stocks', stocks_path %>
     <%= link_to "Show Portfolio", broker_portfolio_path(@broker) %>
+    <%= link_to "Show Transactions", broker_transaction_path(@broker) %>
     <%= link_to "Edit", edit_broker_registration_path %>
     <%= link_to "Logout", destroy_broker_session_path, method: :delete %>
 <% else %>

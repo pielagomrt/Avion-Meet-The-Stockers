@@ -1,28 +1,26 @@
 <table>
   <thead>
     <tr>
-    <th scope="col"></th>
-    <th scope="col">Stock ID</th>
       <th scope="col">Stock Ticker</th>
       <th scope="col">Stock Company</th>
       <th scope="col">Price</th>
-      <th scope="col">Broker</th>
       <th scope="col">Quantity</th>
+      <th scope="col">Total Amount</th>
     </tr>
   </thead>
-  <% @buyer_stocks_brokerstocks.each do |buyer_stock| %>
-    <tbody>
-      <tr>
-        <td scope="row"></td>
-        <td><%= buyer_stock.id %></td>
-        <td><%= buyer_stock.broker_stock.stock.ticker %></td>
-        <td><%= buyer_stock.broker_stock.stock.company %></td>
-        <td><%= buyer_stock.broker_stock.stock.price %></td>
-        <td><%= buyer_stock.broker_stock.broker.first_name %> <%= buyer_stock.broker_stock.broker.last_name %></td>
-        <td><%= buyer_stock.quantity %></td>
-
-      </tr>
-    </tbody>
+  <% @buyer_stocks.group(:stock_id).sum(:quantity).each do |id, sum| %>
+  <tbody>
+    <tr>
+    
+      <% stock = Stock.find(id) %>
+      <td><%= stock.ticker %></td>
+      <td><%= stock.company %></td>
+      <td><%= number_to_currency(stock.price.to_f) %></td>
+      <td><%= sum %></td>
+      <td><%= number_to_currency(stock.price.to_f * sum) %></td>
+    
+    </tr>
+  </tbody>
   <% end %>
 </table>
 <br><br>

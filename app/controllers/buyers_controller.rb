@@ -5,7 +5,7 @@ class BuyersController < ApplicationController
 
 
   def show_portfolio
-    @buyer_stocks = Buyer.find(params[:id]).buyer_stocks.all
+    @buyer_stocks = current_buyer.broker_stocks
   end
 
 
