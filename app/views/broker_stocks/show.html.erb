@@ -3,7 +3,7 @@
   <p>Stock Ticker: <%= @stock.ticker %></p>
   <p>Stock Company: <%= @stock.company %></p>
   <%= f.label :quantity %>
-  <%= f.number_field :quantity %>
+  <%= f.number_field :quantity, min: 1, step: 1 %>
   <p>Stock Price: <%= @stock.price %></p>
   <%= f.submit 'Buy' %>
 <% end %>

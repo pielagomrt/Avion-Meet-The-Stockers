@@ -78,6 +78,10 @@ class AdminsController < ApplicationController
     end
   end
 
+  def show_transaction
+    @buyer_stocks = BuyerStock.all
+  end
+
   private
 
   def broker_create_params

@@ -2,4 +2,10 @@
 <p>Stock Ticker: <%= @stock.ticker %></p>
 <p>Stock Company: <%= @stock.company %></p>
 <p>Stock Price: <%= @stock.price %></p>
-<%= link_to 'Add to my portfolio', broker_stocks_path(stock_id: @stock.id), method: :post, data: { confirm: 'Are you sure you want to buy this?' } %>
+
+<% if current_broker.stocks.include?(@stock) %>
+    <p>You already added this stock to your list</p>
+    <%= link_to 'Back', :back %>
+<% else %>
+    <%= link_to 'Add to my portfolio', broker_stocks_path(stock_id: @stock.id), method: :post, data: { confirm: 'Are you sure you want to buy this?' } %>
+<% end %>

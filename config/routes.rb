@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   get 'brokers/:id/portfolio' => 'brokers#show_portfolio', as: 'broker_portfolio'
   get 'buyers/:id/portfolio' => 'buyers#show_portfolio', as: 'buyer_portfolio'
 
+  get 'brokers/:id/transaction' => 'brokers#show_transaction', as: 'broker_transaction'
   get 'buyers/:id/transaction' => 'buyers#show_transaction', as: 'buyer_transaction'
+  get 'admins/show/transaction' => 'admins#show_transaction', as: 'all_transactions'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

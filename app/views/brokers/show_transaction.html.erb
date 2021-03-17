@@ -1,0 +1,36 @@
+<table>
+  <thead>
+    <tr>
+    <th scope="col"></th>
+      <th scope="col">Stock ID</th>
+      <th scope="col">Date and Time</th>
+      <th scope="col">Ticker</th>
+      <th scope="col">Company</th>
+      <th scope="col">Price</th>
+      <th scope="col">Broker</th>
+      <th scope="col">Buyer</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Amount</th>
+    </tr>
+  </thead>
+  <% @buyer_stocks.each do |buyer_stock| %>
+    <% if buyer_stock.broker_stock.broker_id === current_broker.id %>
+      <tbody>
+        <tr>
+          <td scope="row"></td>
+          <td><%= buyer_stock.id %></td>
+          <td><%= buyer_stock.created_at.strftime("%d-%^b-%Y, %l:%M %p UTC") %></td>
+          <td><%= buyer_stock.broker_stock.stock.ticker %></td>
+          <td><%= buyer_stock.broker_stock.stock.company %></td>
+          <td><%= buyer_stock.broker_stock.stock.price %></td>
+          <td><%= buyer_stock.broker_stock.broker.first_name %> <%= buyer_stock.broker_stock.broker.last_name %></td>
+          <td><%= buyer_stock.buyer.first_name %> <%= buyer_stock.buyer.last_name %></td>
+          <td><%= buyer_stock.quantity %></td>
+          <td><%= (buyer_stock.broker_stock.stock.price.to_f * buyer_stock.quantity) %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  <% end %>
+</table>
+<br><br>
+<%= link_to "Go Back", broker_path(current_broker) %>
