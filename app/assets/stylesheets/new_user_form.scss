@@ -1,0 +1,48 @@
+body.new-user {
+  background:#171F33;
+}
+
+.form-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.form-register-user{
+  text-align: center;
+  width: 50vw;
+  background-color: black;
+  color:white;
+  font-family: 'Lato', sans-serif;
+  border-radius: 25px;
+}
+
+.form-register-header{
+  display:flex;
+  justify-content: stretch;
+}
+
+.form-register-header a{
+  color:white!important;
+}
+
+.buyer-link{  
+  flex-grow: 1;
+  background-color: green;
+  border:2px solid white;
+}
+
+.buyer-link:hover {
+  background-color:red;
+}
+
+.broker-link{
+  flex-grow: 1;
+  background-color: green;
+  border:2px solid white;
+}
+
+.broker-link:hover {
+  background-color:red;
+}

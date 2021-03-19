@@ -1,3 +1,27 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body.welcome {
+  background:#171F33;
+}
+
+#navbar1{
+  background-color: red;
+}
+
+#main-container{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  height: 100vh;
+}
+
+#main-header{
+  color:#31EDAD;
+}
+
+.welcome-main-container img{
+  height: auto;
+  width: 100%;
+}

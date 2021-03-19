@@ -1,0 +1,28 @@
+<nav id="navbar1" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+	
+    <span class="navbar-brand">MTS</span>
+
+    <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text">
+    <i class="fa fa-bars fa-1x"></i></span>
+    </button>
+    
+   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+     <ul class="nav navbar-nav ml-auto">
+	 
+      <% if admin_signed_in? %>
+      <li class="nav-item active"> <%= link_to 'Logout',  destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
+      <%elsif broker_signed_in? %>
+      <li class="nav-item active"> <%= link_to 'Logout',  destroy_broker_session_path, method: :delete, class: "btn btn-danger" %></li>
+      <%elsif buyer_signed_in? %>
+      <li class="nav-item active"> <%= link_to 'Logout',  destroy_buyer_session_path, method: :delete, class: "btn btn-danger" %></li>
+      <%else%>
+      <li class="nav-item"> <%= link_to "Home Page", root_path, class: "nav-link" %></li>
+	    <li class="nav-item"><a class="nav-link" id="active2" href="#Portfolio">About</a></li>
+	    <li class="nav-item"><a class="nav-link" id="active3" href="#Contact">Contact</a></li>
+      <li class="nav-item ">  <%= link_to 'Login', new_buyer_session_path, class: "btn btn-success"%> </li>
+      
+    <% end %>
+    </ul>
+	</div>
+</nav>
