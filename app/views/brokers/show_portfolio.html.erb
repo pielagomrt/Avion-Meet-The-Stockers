@@ -1,8 +1,13 @@
 <%= stylesheet_link_tag 'broker_show.css' %>
 <body class="broker-bg">
 <div class="container">
-  <%= render template: "stocks/new.html.erb" %>
-  <h1>Hello, <%=@broker_admin.first_name %>!</h1>
+  <% if broker_signed_in? %>
+    <%= render template: "stocks/new.html.erb" %>
+  <% else %>
+    <h1 class="text-center text-light">BROKER<br><br><%=@broker_admin.first_name.capitalize %> <%=@broker_admin.last_name.capitalize %></h1>
+    <h1 class="text-center text-light"><%=@broker_admin.email %></h1>
+    <div class="text-center mt-4"><%= link_to "Back", :back, class: 'btn btn-light' %></div>
+  <% end %>
 </div>
 <div class="container">
   <div class="row">

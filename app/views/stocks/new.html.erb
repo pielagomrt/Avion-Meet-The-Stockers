@@ -1,13 +1,23 @@
+<%if broker_signed_in? %>
 <div class="d-flex justify-content-center mb-2">
   <%= image_tag("broker.png", size: 100)%>
 </div>
 <h3 class="text-center text-light">BROKER</h3>
 <br>
-<%if broker_signed_in? %>
 <div class="input-group rounded">
   <%= form_with method: :post, scope: :stock, url: stocks_path, class: "d-flex m-auto", local:true do |f| %>
     <%= f.text_field :ticker, class: "form-control-lg rounded mr-1", "placeholder": "Search Ticker", "aria-label": "Search", "aria-describedby": "search-addon" %>
     <%= f.submit "🔍", class: "input-group-text", "id": "search-addon" %>
   <% end %>
+</div>
+<%end%>
+<%if buyer_signed_in? %>
+<div class="d-flex justify-content-center mb-2">
+  <%= image_tag("buyer.png", size: 100)%>
+</div>
+<h3 class="text-center text-light">BUYER</h3>
+<br>
+<div class="d-flex justify-content-center">
+  <%= link_to "Buy Stocks", broker_stocks_path, class: "btn btn-success btn-lg" %>
 </div>
 <%end%>

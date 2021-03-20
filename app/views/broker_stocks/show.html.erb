@@ -1,9 +1,20 @@
-<%= form_with method: :post, scope: :buyer_stock, url: buyer_stocks_path(id: @broker_stock.id) , local:true do |f| %>
-  <p>Broker: <%= @broker.first_name %> <%= @broker.last_name %></p>
-  <p>Stock Ticker: <%= @stock.ticker %></p>
-  <p>Stock Company: <%= @stock.company %></p>
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity, min: 1, step: 1 %>
-  <p>Stock Price: <%= @stock.price %></p>
-  <%= f.submit 'Buy' %>
-<% end %>
+
+
+<body class="broker-bg">
+ <div class="container">
+		<div class="row stock-bg d-flex justify-content-center text-center">
+    <%= form_with method: :post, scope: :buyer_stock, url: buyer_stocks_path(id: @broker_stock.id) , local:true do |f| %>
+            <div class="well">
+            <h2 class="text-light"><small class="h6">Broker:</small> <br><b><%= @broker.first_name.capitalize %> <%= @broker.last_name.capitalize %></b></h2>
+        		<h2 class="text-light"><small class="h6">Ticker:</small> <br><b><%= @stock.ticker %></b></h2>
+            <h2 class="text-light"><small class="h6">Company:</small> <br><b><%= @stock.company %></b></h2>
+        		<h2 class="text-light"><small class="h6">Stock Price:</small><br> <b><%= number_to_currency(@stock.price) %></b></h2>
+            <%= f.label :quantity, class: "text-light" %><br>
+            <%= f.number_field :quantity, min: 1, step: 1, class: 'p-2' %>    
+            <br><br>
+                <%= f.submit 'Buy', class: "btn btn-info" %>
+        	</div>
+          <% end %>
+
+        </div>
+</body>

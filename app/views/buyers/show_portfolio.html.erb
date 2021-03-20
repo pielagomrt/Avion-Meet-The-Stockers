@@ -1,26 +1,47 @@
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Stock Ticker</th>
-      <th scope="col">Stock Company</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total Amount</th>
-    </tr>
-  </thead>
-  <% @buyer_stocks.group(:stock_id).sum(:quantity).each do |id, sum| %>
-  <tbody>
-    <tr>
-    
-      <% stock = Stock.find(id) %>
-      <td><%= stock.ticker %></td>
-      <td><%= stock.company %></td>
-      <td><%= number_to_currency(stock.price.to_f) %></td>
-      <td><%= sum %></td>
-      <td><%= number_to_currency(stock.price.to_f * sum) %></td>
-    
-    </tr>
-  </tbody>
+<%= stylesheet_link_tag 'buyer_show.css' %>
+<body class="broker-bg">
+<div class="container">
+  <% if buyer_signed_in? %>
+    <%= render template: "stocks/new.html.erb" %>
+  <% else %>
+    <h1 class="text-center text-light">BUYER<br><br><%=@buyer.first_name.capitalize %> <%=@buyer.last_name.capitalize %></h1>
+    <h1 class="text-center text-light"><%=@buyer.email %></h1>
+    <div class="text-center mt-4"><%= link_to "Back", :back, class: 'btn btn-light' %></div>
   <% end %>
-</table>
-<br><br>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 performers">
+      <%= render template: 'brokers/show.html.erb' %>
+    </div>   
+    <div class="col-xs-6 portfolio text-center">  
+    <h2 class="text-success"><b>PORTFOLIO</b></h2><br>
+      <table class="this-table ml-3">
+        <thead>
+          <tr>
+            <th scope="col" class="pr-2">TICKER</th>
+            <th scope="col" class="pr-2">COMPANY</th>
+            <th scope="col" class="pr-2">PRICE</th>
+            <th scope="col" class="pr-2">QUANTITY</th>
+            <th scope="col" style="width: 15%">AMOUNT</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @buyer_stocks.group(:stock_id).sum(:quantity).each do |id, sum| %>       
+            <tr>
+              <% stock = Stock.find(id) %>
+              <td><%= stock.ticker %></td>
+              <td><%= stock.company %></td>
+              <td><%= number_to_currency(stock.price.to_f) %></td>
+              <td><%= sum %></td>
+              <td><%= number_to_currency(stock.price.to_f * sum) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="bottom text-center"><small>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
+</body>

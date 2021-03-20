@@ -1,15 +1,84 @@
-<h1>BUYER'S ACCOUNT</h1>
-
-<p>Buyer Name: <%= @buyer.first_name %> <%= @buyer.last_name %></p>
-
-<p>Buyer Email: <%= @buyer.email %></p>
-
-<% if buyer_signed_in? %>
-    <%= link_to "Buy Stocks", broker_stocks_path %>
-    <%= link_to "Show Portfolio", buyer_portfolio_path(@buyer) %>
-    <%= link_to "Show Transaction", buyer_transaction_path(@buyer) %>
-    <%= link_to "Edit", edit_buyer_registration_path %>
-    <%= link_to "Logout", destroy_buyer_session_path, method: :delete %>
-<% else %>
-    <%= link_to "Go Back", admins_path %>
-<% end %>
+<h2><b>MOST CAPITALIZED COMPANIES</b></h2>
+<table class="text-center m-auto h6 market">
+    <thead>
+        <tr>
+        <th scope="col" class="pr-4">No.</th>
+        <th scope="col" class="pr-4">Ticker</th>
+        <th scope="col" class="pr-4">Company</th>
+        <th scope="col" class="pr-4">Price</th>
+        <th scope="col">Market Cap</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td scope="row" class="pr-4"><strong>1</strong></td>
+        <td class="pr-4">AAPL</td>
+        <td class="pr-4">Appl Inc</td>
+        <td class="pr-4">$119.99</td>
+        <td>$2.014T</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>2</strong></td>
+        <td class="pr-4">MSFT</td>
+        <td class="pr-4">Microsoft Corp.</td>
+        <td class="pr-4">$230.35</td>
+        <td>$1.737T</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>3</strong></td>
+        <td class="pr-4">AMZN</td>
+        <td class="pr-4">Amazon Com Inc</td>
+        <td class="pr-4">$3,074.96</td>
+        <td>$1.548T</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>4</strong></td>
+        <td class="pr-4">GOOG</td>
+        <td class="pr-4">Alphabet Inc</td>
+        <td class="pr-4">$2,026.96</td>
+        <td>$1.377T</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>5</strong></td>
+        <td class="pr-4">FB</td>
+        <td class="pr-4">Facebook Inc</td>
+        <td class="pr-4">$290.11</td>
+        <td>$826.138B</td>
+    </tr>
+    <tr>
+       <td scope="row" class="pr-4"><strong>6</strong></td>
+        <td class="pr-4">BABA</td>
+        <td class="pr-4">Alibaba Group</td>
+        <td class="pr-4">$239.79</td>
+        <td>$640.864B</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>7</strong></td>
+        <td class="pr-4">TSLA</td>
+        <td class="pr-4">Tesla Inc</td>
+        <td class="pr-4">$654.87</td>
+        <td>$628.58B</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>8</strong></td>
+        <td class="pr-4">V</td>
+        <td class="pr-4">Visa Inc</td>
+        <td class="pr-4">$206.90</td>
+        <td>$442.202B</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>9</strong></td>
+        <td class="pr-4">JNJ</td>
+        <td class="pr-4">Johnson & Johnson</td>
+        <td class="pr-4">$160.04</td>
+        <td>$421.339B</td>
+    </tr>
+    <tr>
+        <td scope="row" class="pr-4"><strong>10</strong></td>
+        <td class="pr-4">WMT</td>
+        <td class="pr-4">Walmart Inc</td>
+        <td class="pr-4">$131.74</td>
+        <td>$372.731B</td>
+    </tr>
+    </tbody>
+</table>
