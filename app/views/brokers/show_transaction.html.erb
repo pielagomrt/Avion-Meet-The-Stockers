@@ -1,13 +1,17 @@
-<table>
-  <thead>
+<%= stylesheet_link_tag 'broker_show.css' %>
+<body class="broker-bg">
+<div class="d-flex justify-content-center mb-4">
+  <%= image_tag("broker.png", size: 100)%>
+</div>
+<h3 class="text-center text-light">TRANSACTIONS</h3>
+<table class="container table">
+  <thead class="thead-dark">
     <tr>
     <th scope="col"></th>
-      <th scope="col">Stock ID</th>
-      <th scope="col">Date and Time</th>
+      <th scope="col">Date Purchased</th>
       <th scope="col">Ticker</th>
       <th scope="col">Company</th>
       <th scope="col">Price</th>
-      <th scope="col">Broker</th>
       <th scope="col">Buyer</th>
       <th scope="col">Quantity</th>
       <th scope="col">Total Amount</th>
@@ -18,19 +22,18 @@
       <tbody>
         <tr>
           <td scope="row"></td>
-          <td><%= buyer_stock.id %></td>
           <td><%= buyer_stock.created_at.strftime("%d-%^b-%Y, %l:%M %p UTC") %></td>
-          <td><%= buyer_stock.broker_stock.stock.ticker %></td>
+          <td class="text-success font-weight-bold"><%= buyer_stock.broker_stock.stock.ticker %></td>
           <td><%= buyer_stock.broker_stock.stock.company %></td>
-          <td><%= buyer_stock.broker_stock.stock.price %></td>
-          <td><%= buyer_stock.broker_stock.broker.first_name %> <%= buyer_stock.broker_stock.broker.last_name %></td>
+          <td><%= number_to_currency(buyer_stock.broker_stock.stock.price) %></td>
           <td><%= buyer_stock.buyer.first_name %> <%= buyer_stock.buyer.last_name %></td>
           <td><%= buyer_stock.quantity %></td>
-          <td><%= (buyer_stock.broker_stock.stock.price.to_f * buyer_stock.quantity) %></td>
+          <td class="text-success font-weight-bold"><%= number_to_currency(buyer_stock.broker_stock.stock.price.to_f * buyer_stock.quantity) %></td>
         </tr>
       </tbody>
     <% end %>
   <% end %>
 </table>
 <br><br>
-<%= link_to "Go Back", broker_path(current_broker) %>
+<div class="bottom m-auto"><small>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
+</body>

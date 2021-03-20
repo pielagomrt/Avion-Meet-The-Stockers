@@ -1,19 +1,33 @@
-OPEN BUYER ACCOUNT
-<div>
+<%= stylesheet_link_tag 'admin_new_buyer_form.css' %>
+<body class = "admin-new-buyer">
+
+<div class = "admin-form-container mt-5">
   <%= form_with method: :post, scope: :buyer, url: create_buyer_admin_path , local:true do |f| %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <div class = "admin-form-register">
+      <h1>OPEN BUYER ACCOUNT</h1>
+      <div class = "form-group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name %>
+      </div>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <div class = "form-group">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <div class = "form-group">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
 
-    <%= f.label :password %>
-    <%= f.text_field :password %>
+    <div class = "form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </div>
 
-    <%= f.submit 'Save' %>
-    <%= link_to "Go Back", admins_path %>
+    <%= f.submit "Create Account", class:'btn btn-light mb-3' %><br />
+    <%= link_to "Go Back", admins_path, class:'btn btn-light mb-3' %>
+    </div>
   <% end %>
 </div>
+</body>

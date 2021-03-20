@@ -1,11 +1,17 @@
-
-<p>Stock Ticker: <%= @stock.ticker %></p>
-<p>Stock Company: <%= @stock.company %></p>
-<p>Stock Price: <%= @stock.price %></p>
-
-<% if current_broker.stocks.include?(@stock) %>
-    <p>You already added this stock to your list</p>
-    <%= link_to 'Back', :back %>
-<% else %>
-    <%= link_to 'Add to my portfolio', broker_stocks_path(stock_id: @stock.id), method: :post, data: { confirm: 'Are you sure you want to buy this?' } %>
-<% end %>
+<body class="broker-bg">
+ <div class="container">
+		<div class="row stock-bg d-flex justify-content-center text-center">
+            <div class="well">
+        		<h2 class="text-light"><small class="h6">Ticker:</small> <br><b><%= @stock.ticker %></b></h2>
+                <h2 class="text-light"><small class="h6">Company:</small> <br><b><%= @stock.company %></b></h2>
+        		<h3 class="text-light h1"><small class="h6">Stock Price:</small><br> <b><%= number_to_currency(@stock.price) %></b></h3>
+                <br>
+                <% if current_broker.stocks.include?(@stock) %>
+                    <p class='text-danger font-weight-bold'>You already added this stock to your list</p>
+                    <%= link_to 'Back', :back, class: 'btn btn-info' %>
+                <% else %>
+                    <%= link_to 'Add to my portfolio', broker_stocks_path(stock_id: @stock.id), method: :post, data: { confirm: 'Are you sure you want to buy this?' }, class: "btn btn-info" %>
+                <% end %>
+        	</div>
+        </div>
+</body>

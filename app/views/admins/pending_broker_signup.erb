@@ -1,29 +1,34 @@
-<h1>Brokers for Approval:</h1>
-<table>
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th></th>
-      <th></th>
-      <th>For Approval</th>
-    </tr>
-  </thead>
-  <% @brokers.each do |broker| %>
-    <tbody>
+<%= stylesheet_link_tag 'admin_pending_broker_signup.css' %>
+<body class = "admin-pending">
+<<h1 style="color:white;">Brokers for Approval:</h1>
+<div class= "table-responsive"> 
+  <table class="table table-striped">
+    <thead class="thead-light">
       <tr>
-        <td scope="row"></td>
-        <td><%= broker.first_name %></td>
-        <td><%= broker.last_name %></td>
-        <td><%= broker.email %></td>
-        <td><%= link_to 'View', broker_path(broker) %></td>
-        <td><%= link_to 'Edit', edit_broker_admin_path(broker) %></td>
-        <td><%= link_to "Approve", approve_broker_admin_path(broker), method: :put, data: { confirm: 'Are you sure you want to approve this?' } %></td>
+        <th scope="col"></th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>For Approval</th>
       </tr>
-    </tbody>
-  <% end %>
-</table>
+    </thead>
+    <% @brokers.each do |broker| %>
+      <tbody>
+        <tr>
+          <td scope="row"></td>
+          <td><%= broker.first_name %></td>
+          <td><%= broker.last_name %></td>
+          <td><%= broker.email %></td>
+          <td><%= link_to '👁‍🗨', broker_path(broker) %></td>
+          <td><%= link_to '📝', edit_broker_admin_path(broker) %></td>
+          <td><%= link_to "Approve", approve_broker_admin_path(broker), class: 'btn btn-success', method: :put, data: { confirm: 'Are you sure you want to approve this broker?' } %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
 <br>
-<%= link_to "Go Back", admins_path %>
+<%= link_to "Go Back", admins_path, class: 'btn btn-light' %>
+</body>

@@ -11,17 +11,41 @@
      <ul class="nav navbar-nav ml-auto">
 	 
       <% if admin_signed_in? %>
-      <li class="nav-item active"> <%= link_to 'Logout',  destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
-      <%elsif broker_signed_in? %>
-      <li class="nav-item active"> <%= link_to 'Logout',  destroy_broker_session_path, method: :delete, class: "btn btn-danger" %></li>
+        <li class="nav-item"> <%= link_to "Home", admins_path, class: "nav-link" %></li>
+        <li class="nav-item"> <%= link_to "Show All Transactions", all_transactions_path, class: "nav-link" %></li>
+        <li class="nav-item active"> <%= link_to 'Logout',  destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
+        <%elsif broker_signed_in? %>
+        <% stylesheet_link_tag "dropdown.css" %>
+        <li class="nav-item active mx-4">
+          <%= link_to broker_portfolio_path(current_broker), class: "nav-link" do %>
+            Portfolio<span class="sr-only">(current)</span>
+          <% end %>
+        </li>
+        <li class="nav-item active mx-4">
+          <%= link_to broker_transaction_path(current_broker), class: "nav-link" do %>
+            Transactions<span class="sr-only">(current)</span>
+          <% end %>
+        </li>
+        <li class="nav-item active mx-4">
+          <div class="dropdown">
+            <a class="nav-link active" href="#">Account</a>
+            <div class="dropdown-content p-4 drop">
+                <p>name:<br><strong class="text-capitalize"><%= current_broker.first_name %> <%= current_broker.last_name %></strong></p>
+                <p>email: <strong><%= current_broker.email %></strong></p>
+                <p><%= link_to "Edit", edit_broker_registration_path, class: "btn btn-success" %></p>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item active mx-4">
+          <%= link_to 'Logout',  destroy_broker_session_path, method: :delete, class: "btn btn-danger" %>
+        </li>
       <%elsif buyer_signed_in? %>
-      <li class="nav-item active"> <%= link_to 'Logout',  destroy_buyer_session_path, method: :delete, class: "btn btn-danger" %></li>
+        <li class="nav-item active"> <%= link_to 'Logout',  destroy_buyer_session_path, method: :delete, class: "btn btn-danger" %></li>
       <%else%>
-      <li class="nav-item"> <%= link_to "Home Page", root_path, class: "nav-link" %></li>
-	    <li class="nav-item"><a class="nav-link" id="active2" href="#Portfolio">About</a></li>
-	    <li class="nav-item"><a class="nav-link" id="active3" href="#Contact">Contact</a></li>
-      <li class="nav-item ">  <%= link_to 'Login', new_buyer_session_path, class: "btn btn-success"%> </li>
-      
+        <li class="nav-item"> <%= link_to "Home Page", root_path, class: "nav-link" %></li>
+        <li class="nav-item"><a class="nav-link" id="active2" href="#Portfolio">About</a></li>
+        <li class="nav-item"><a class="nav-link" id="active3" href="#Contact">Contact</a></li>
+        <li class="nav-item ">  <%= link_to 'Login', new_buyer_session_path, class: "btn btn-success"%> </li>
     <% end %>
     </ul>
 	</div>

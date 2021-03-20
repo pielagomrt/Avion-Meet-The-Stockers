@@ -1,13 +1,23 @@
-EDIT BUYER ACCOUNT
-<div>
+<%= stylesheet_link_tag 'admin_edit_broker_form.css' %>
+<body class = "admin-edit-buyer">
+<div class = "admin-form-container mt-5">
   <%= form_with method: :put, scope: :buyer, url: update_buyer_admin_path , local:true do |f| %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <div class = "admin-form-edit">
+      <h1>EDIT BUYER ACCOUNT</h1>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+      <div class = "form-group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name %>
+      </div>
 
-    <%= f.submit 'Save' %>
-    <%= link_to "Go Back", admins_path %>
+      <div class = "form-group">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name %>
+      </div>
+
+      <%= f.submit "Edit Account", class:'btn btn-light mb-3' %><br />
+      <%= link_to "Go Back", admins_path, class:'btn btn-light mb-3' %>
+    </div>
   <% end %>
 </div>
+</body>

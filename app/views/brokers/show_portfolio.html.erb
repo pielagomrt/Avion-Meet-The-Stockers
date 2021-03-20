@@ -1,24 +1,39 @@
-<table>
-  <thead>
-    <tr>
-    <th scope="col"></th>
-      <th scope="col">Stock ID</th>
-      <th scope="col">Ticker</th>
-      <th scope="col">Company</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <% @broker_stocks.each do |broker| %>
-    <tbody>
-      <tr>
-        <td scope="row"></td>
-        <td><%= broker.id %></td>
-        <td><%= broker.ticker %></td>
-        <td><%= broker.company %></td>
-        <td><%= broker.price %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
-<br><br>
-<%= link_to "Go Back", broker_path(current_broker) %>
+<%= stylesheet_link_tag 'broker_show.css' %>
+<body class="broker-bg">
+<div class="container">
+  <%= render template: "stocks/new.html.erb" %>
+  <h1>Hello, <%=@broker_admin.first_name %>!</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 performers">
+      <%= render template: 'brokers/show.html.erb' %>
+    </div>   
+    <div class="col-xs-6 portfolio text-center">  
+    <h2 class="text-success"><b>PORTFOLIO</b></h2><br>
+      <table class="this-table">
+        <thead>
+          <tr>
+          <th scope="col"></th>
+            <th scope="col">TICKER</th>
+            <th scope="col">COMPANY</th>
+            <th scope="col">PRICE</th>
+          </tr>
+        </thead>
+        <% @broker_stocks.each do |broker| %>
+          <tbody>
+            <tr>
+              <td scope="row"></td>
+              <td><%= broker.ticker %></td>
+              <td><%= broker.company %></td>
+              <td><%= number_to_currency(broker.price) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="bottom text-center"><small>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
+</body>
