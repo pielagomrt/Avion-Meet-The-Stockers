@@ -8,10 +8,10 @@
       <div class = "form-login-broker">
           <div class = "form-register-header mb-3">
             <div class = "buyer-link">
-              <%= link_to 'BUYER', new_buyer_session_path %>
+              <%= link_to 'BUYER', new_buyer_session_path, class: 'text-decoration-none' %>
             </div>
             <div class = "broker-link">
-              <%= link_to 'BROKER', new_broker_session_path %>
+              <%= link_to 'BROKER', new_broker_session_path, class: 'text-decoration-none' %>
             </div>
         </div>
 
@@ -37,10 +37,12 @@
         <%= f.submit "Log in", class:'btn btn-light mb-3' %>
         </div>
         <div class = "form-signup-link">
-          <%= link_to "Don't have an account? Sign up here.", new_buyer_registration_path, class:'mb-3' %>
+          <%= link_to "Don't have an account? Sign up here.", new_broker_registration_path, class:'mb-3' %>
         </div>
-
+        <%= link_to "login as admin", admins_path, class: 'text-light small' %>
+        <br><br>
       </div>
     <% end %>
+    
   </div>
 </body>

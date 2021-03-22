@@ -7,17 +7,17 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-group", html: { method: :put }) do |f| %>
   <%= render "buyers/shared/error_messages", resource: resource %>
 
-  <div class="field text-light text-center">
+  <div class="field text-light text-center"><br>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field text-light text-center">
+  <div class="field text-light text-center"><br>
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field text-light text-center">
+  <div class="field text-light text-center"><br>
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -26,8 +26,8 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field text-light text-center">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <div class="field text-light text-center"><br>
+    <%= f.label :password %> <br><i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -35,25 +35,28 @@
     <% end %>
   </div>
 
-  <div class="field text-light text-center">
+  <div class="field text-light text-center"><br>
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  </div><br><br>
 
   <div class="field text-light text-center">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <br><i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions text-center mt-4 mb-2">
-    <%= f.submit "Update" %>
-  </div>
+  <div class="actions text-center mt-4 mb-2"><br>
+    <%= f.submit "Update", class: 'rounded' %>
+  </div><br><br>
 <% end %>
 
 <h3 class="text-light text-center">Cancel my account</h3>
 <div class="text-center">
-<p class="text-light text-center">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-</div>
+<p class="text-light text-center">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'rounded' %></p>
+</div><br><br>
 <div class="text-center">
   <%= link_to "Back", :back, class: 'm-auto btn btn-info' %>
 </div>
+</div>
+</body>
+<br>

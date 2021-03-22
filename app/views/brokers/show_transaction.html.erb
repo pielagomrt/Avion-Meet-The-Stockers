@@ -26,7 +26,7 @@
           <td class="text-success font-weight-bold"><%= buyer_stock.broker_stock.stock.ticker %></td>
           <td><%= buyer_stock.broker_stock.stock.company %></td>
           <td><%= number_to_currency(buyer_stock.broker_stock.stock.price) %></td>
-          <td><%= buyer_stock.buyer.first_name %> <%= buyer_stock.buyer.last_name %></td>
+          <td class='text-success font-weight-bold'><%= buyer_stock.buyer.first_name.capitalize %> <%= buyer_stock.buyer.last_name.capitalize %></td>
           <td><%= buyer_stock.quantity %></td>
           <td class="text-success font-weight-bold"><%= number_to_currency(buyer_stock.broker_stock.stock.price.to_f * buyer_stock.quantity) %></td>
         </tr>
@@ -38,6 +38,6 @@
 <div class="text-center">
   <%= link_to "Go Back", :back, class: 'btn btn-light btn-lg' %>
 </div>
-<br><br>
-<div class="bottom m-auto"><small>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
+<br><br><br>
+<div class="text-center"><small>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
 </body>

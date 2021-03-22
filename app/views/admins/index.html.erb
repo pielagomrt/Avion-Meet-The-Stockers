@@ -20,8 +20,8 @@
       <tbody>
         <tr>
           <td scope="row"></td>
-          <td><%= broker.first_name %></td>
-          <td><%= broker.last_name %></td>
+          <td><%= broker.first_name.capitalize %></td>
+          <td><%= broker.last_name.capitalize %></td>
           <td><%= broker.email %></td>
           <td><%= link_to '👁‍🗨', broker_portfolio_path(broker) %></td>
           <td><%= link_to '📝', edit_broker_admin_path(broker) %></td>
@@ -51,8 +51,8 @@
       <tbody>
         <tr>
           <td scope="row"></td>
-          <td><%= buyer.first_name %></td>
-          <td><%= buyer.last_name %></td>
+          <td><%= buyer.first_name.capitalize %></td>
+          <td><%= buyer.last_name.capitalize %></td>
           <td><%= buyer.email %></td>
           <td><%= link_to '👁‍🗨', buyer_portfolio_path(buyer) %></td>
           <td><%= link_to '📝', edit_buyer_admin_path(buyer) %></td>
