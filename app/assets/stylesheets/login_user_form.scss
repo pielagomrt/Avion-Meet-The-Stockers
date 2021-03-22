@@ -9,7 +9,16 @@ body.login-user {
   box-sizing: border-box;
 }
 
-.form-login-user{
+.form-login-admin{
+  text-align: center;
+  width: 50vw;
+  background-color: black;
+  color:white;
+  font-family: 'Lato', sans-serif;
+  border-radius: 25px;
+}
+
+.form-login-buyer{
   text-align: center;
   width: 50vw;
   background-color: #585481;

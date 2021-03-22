@@ -4,13 +4,13 @@
 
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class = "form-login-user">
+    <div class = "form-login-buyer">
       <div class = "form-login-header mb-3">
       <div class = "buyer-link">
-        <%= link_to 'BUYER', new_buyer_session_path %>
+        <%= link_to 'BUYER', new_buyer_session_path, class: 'text-decoration-none' %>
       </div>
       <div class = "broker-link">
-        <%= link_to 'BROKER', new_broker_session_path %>
+        <%= link_to 'BROKER', new_broker_session_path, class: 'text-decoration-none' %>
       </div>
       </div>
 
@@ -37,10 +37,15 @@
       </div>
 
       <div class = "form-signup-link">
-      <%= link_to "Don't have an account? Sign up here.", new_buyer_registration_path, class:'mb-3' %>
+        <%= link_to "Don't have an account? Sign up here.", new_buyer_registration_path, class:'mb-3' %>
       </div>
+
   <% end %>
+  <%= link_to "login as admin", admins_path, class: 'text-light small' %>
+  <br><br>
+
   </div>
+  
 </div>
 
 

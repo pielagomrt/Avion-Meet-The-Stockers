@@ -23,13 +23,13 @@
           <td scope="row"></td>
           <td><%= buyer_stock.id %></td>
           <td><%= buyer_stock.created_at.strftime("%d-%^b-%Y, %l:%M %p UTC") %></td>
-          <td><%= buyer_stock.broker_stock.stock.ticker %></td>
+          <td class="text-success"><%= buyer_stock.broker_stock.stock.ticker %></td>
           <td><%= buyer_stock.broker_stock.stock.company %></td>
-          <td><%= buyer_stock.broker_stock.stock.price %></td>
-          <td><%= buyer_stock.broker_stock.broker.first_name %> <%= buyer_stock.broker_stock.broker.last_name %></td>
-          <td><%= buyer_stock.buyer.first_name %> <%= buyer_stock.buyer.last_name %></td>
+          <td class="text-success"><%= number_to_currency(buyer_stock.broker_stock.stock.price) %></td>
+          <td class="font-italic text-warning"><%= buyer_stock.broker_stock.broker.first_name.capitalize %> <%= buyer_stock.broker_stock.broker.last_name.capitalize %></td>
+          <td class="font-italic text-info"><%= buyer_stock.buyer.first_name.capitalize %> <%= buyer_stock.buyer.last_name.capitalize %></td>
           <td><%= buyer_stock.quantity %></td>
-          <td><%= (buyer_stock.broker_stock.stock.price.to_f * buyer_stock.quantity) %></td>
+          <td class="text-success"><%= number_to_currency(buyer_stock.broker_stock.stock.price.to_f * buyer_stock.quantity) %></td>
         </tr>
       </tbody>
     <% end %>
