@@ -2,6 +2,8 @@ class BrokerMailer < ApplicationMailer
   default from: 'from@example.com'
   layout 'mailer'
 
+  include Devise::Controllers::UrlHelpers
+
   def new_broker_pending(email)
     @email = email
     mail(to: @email, subject: 'Account pending for approval')
