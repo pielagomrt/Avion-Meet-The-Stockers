@@ -118,5 +118,19 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default_url_options = { :host => 'avion-meet-the-stockers.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+  :user_name => '9ae4ede22e525e',
+  :password => 'd68615c9fe0667',
+  :address => 'smtp.mailtrap.io',
+  :domain => 'smtp.mailtrap.io',
+  :port => '2525',
+  :authentication => :cram_md5
+}
   
 end
