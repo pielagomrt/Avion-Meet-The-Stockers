@@ -77,8 +77,9 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.default :charset => "utf-8"
- config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'avion-meet-the-stockers.herokuapp.com' }
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
 # config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
 
 config.action_mailer.smtp_settings = {
@@ -89,6 +90,7 @@ config.action_mailer.smtp_settings = {
   :port => '2525',
   :authentication => :cram_md5
 }
+
 
 # config.action_mailer.smtp_settings = {
 #   address:              'smtp.gmail.com',
