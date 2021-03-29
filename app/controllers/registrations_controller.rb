@@ -10,4 +10,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    case resource
+      when Admin then admins_path
+      when Broker then root_path
+      when Buyer then root_path
+    end
+  end
+
 end
