@@ -1,4 +1,9 @@
 class BuyersController < ApplicationController
+
+  def index
+    root_path
+  end
+
   def show
     @buyer = Buyer.find(params[:id])
   end
