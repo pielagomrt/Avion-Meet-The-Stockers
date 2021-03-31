@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :admins, :controllers => { :registrations => :registrations }
   devise_for :brokers, :controllers => { :registrations => :registrations }
-  devise_for :buyers, path: "", :controllers => { :registrations => :registrations }
+  devise_for :buyers, :controllers => { :registrations => :registrations }
 
   root to: "welcome#index"
 

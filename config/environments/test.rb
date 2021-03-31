@@ -58,8 +58,10 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
   config.action_mailer.perform_deliveries = true 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+  config.action_mailer.default_url_options = { :host => 'avion-meet-the-stockers.herokuapp.com' }
+
   
 
 end
