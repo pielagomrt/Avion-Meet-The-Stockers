@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
 
   def index
-    root_path
+    redirect_to root_path
   end
 
   def show
