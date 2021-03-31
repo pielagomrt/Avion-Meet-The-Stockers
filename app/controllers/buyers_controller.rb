@@ -1,13 +1,8 @@
 class BuyersController < ApplicationController
 
-  def index
-    redirect_to root_path
-  end
-
   def show
     @buyer = Buyer.find(params[:id])
   end
-
 
   def show_portfolio
     @buyer = Buyer.find(params[:id])
